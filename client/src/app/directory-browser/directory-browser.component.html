@@ -1,0 +1,38 @@
+<div class="container mt-4">
+    <div class="form-group">
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="directoryPath"
+        placeholder="Enter directory path"
+      />
+      <button class="btn btn-primary mt-2" (click)="fetchDirectoryListing()">Fetch Listing</button>
+    </div>
+    <div *ngIf="loading" class="text-center">Loading...</div>
+    <div *ngIf="error" class="alert alert-danger mt-2">{{ error }}</div>
+    <table class="table mt-4" *ngIf="directoryListing && directoryListing.length">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Path</th>
+          <th>Size</th>
+          <th>Extension</th>
+          <th>Created Date</th>
+          <th>Permissions</th>
+          <th>Is Directory</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let file of directoryListing">
+          <td>{{ file.name }}</td>
+          <td>{{ file.path }}</td>
+          <td>{{ file.size }}</td>
+          <td>{{ file.extension }}</td>
+          <td>{{ file.createdDate }}</td>
+          <td>{{ file.permissions }}</td>
+          <td>{{ file.isDirectory }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
