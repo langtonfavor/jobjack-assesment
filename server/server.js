@@ -1,8 +1,10 @@
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
+const cors = require('cors')
 
 const app = express();
+app.use(cors())
 const port = 3000;
 
 function getDirectoryListing(directoryPath) {
@@ -44,13 +46,12 @@ function checkPermission(permission, filePath) {
   }
 }
 
-app.get('/directory', (req, res) => {
+app.get('/directory', (req, res) => { 
   const directoryPath = req.query.path || __dirname;
-
   const directoryListing = getDirectoryListing(directoryPath);
 
   if (!directoryListing) {
-    res.status(500).json({ error: 'Failed to retrieve directory listing.' });
+    res.status(500).json({ error: 'Failed to retrieve directory listing....' });
   } else {
     const parentDirectory = path.dirname(directoryPath);
 
