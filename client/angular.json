@@ -1,5 +1,8 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "9ed19b2a-c995-4488-80ea-19e07e0017aa"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -45,12 +48,12 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets",
-              "./node_modules/bootstrap/dist/bootstrap.css"
+              "src/assets"
+             
             ],
             "styles": [
               "src/styles.css",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": []
           },

@@ -25,11 +25,11 @@
       <tbody>
         <tr *ngFor="let file of directoryListing">
           <td>{{ file.name }}</td>
-          <td>{{ file.path }}</td>
+          <td>{{ file.path }} </td>
           <td>{{ file.size }}</td>
           <td>{{ file.extension }}</td>
           <td>{{ file.createdDate }}</td>
-          <td>{{ file.permissions }}</td>
+          <td>{{ file.permissions | json }}</td>
           <td>{{ file.isDirectory }}</td>
         </tr>
       </tbody>

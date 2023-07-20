@@ -27,16 +27,20 @@ export class DirectoryBrowserComponent {
   fetchDirectoryListing(): void {
     this.loading = true;
     this.error = '';
+    const api = `http://localhost:3000`;
+   
+    this.http
+      .get<File[]>(`${api}/directory?path=${this.directoryPath}`)
+      .subscribe(
+        (data: any) => {
+          this.directoryListing = data.files;
+          this.loading = false;
+        },
+        (error) => {
 
-    this.http.get<File[]>('/api/directory?path=' + this.directoryPath).subscribe(
-      (data) => {
-        this.directoryListing = data;
-        this.loading = false;
-      },
-      (error) => {
-        this.error = 'Failed to fetch directory listing.';
-        this.loading = false;
-      }
-    );
+          this.error = 'Failed to fetch directory listing.';
+          this.loading = false;
+        }
+      );
   }
 }
